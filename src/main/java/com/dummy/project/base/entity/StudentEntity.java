@@ -24,10 +24,10 @@ public class StudentEntity {
     private String email;
     private String classType;
     private Integer age;
-    @Lob
-    private byte[] image;
-    private String imageType;
-    private String imagePath;
+//    @Lob
+//    private byte[] image;
+//    private String imageType;
+//    private String imagePath;
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
     @Temporal(TemporalType.TIMESTAMP)
