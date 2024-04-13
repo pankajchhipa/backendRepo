@@ -27,7 +27,7 @@ public class StudentEntity {
 //    @Lob
 //    private byte[] image;
 //    private String imageType;
-//    private String imagePath;
+//    private String imageP;ath
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
     @Temporal(TemporalType.TIMESTAMP)

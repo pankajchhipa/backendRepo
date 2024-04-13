@@ -2,6 +2,7 @@ package com.dummy.project.base.service;
 
 import com.dummy.project.base.dto.StudentDTO;
 import com.dummy.project.base.entity.StudentEntity;
+import org.springframework.core.io.UrlResource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -19,5 +20,7 @@ public interface StudentService {
 
     public String deleteStudent(String id);
 
-    public void saveProfilePhoto(MultipartFile image) throws IOException;
+    public void saveProfilePhoto(MultipartFile image, String studentCode) throws IOException;
+
+    byte[] getProfilePhoto(String studentCode) throws IOException;
 }

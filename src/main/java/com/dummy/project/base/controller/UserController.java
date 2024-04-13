@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 @RequestMapping(value = "/user")
 public class UserController {
 
@@ -20,7 +20,9 @@ public class UserController {
 
     @GetMapping(value = "/getUser/{userCode}")
     public Response<Object> getUserInformationByUserCode(
-            @PathVariable(name = "userCode", required = true) String userCode) {
+            @PathVariable(name = "userCode", required = true) String userCode) throws InterruptedException {
+
+//        Thread.sleep(10000);
         UserEntity result = userService.getUserByUserCode(userCode);
         if (result.getUserCode() == null) {
             return Response.builder()
@@ -33,7 +35,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/getUsers")
-    public List<UserEntity> getUsersInformations() {
+    public List<UserEntity> getUsersInformations() throws InterruptedException {
+        Thread.sleep(3000);
         return userService.getAllUsers();
     }
 
@@ -48,4 +51,8 @@ public class UserController {
         return userEntity;
     }
 
+    @DeleteMapping(value = "/delete")
+    public String deleteUserCode(@RequestParam String id){
+        return userService.deleteUserCode(id);
+    }
 }

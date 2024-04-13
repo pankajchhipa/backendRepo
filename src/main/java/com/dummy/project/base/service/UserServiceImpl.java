@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
         Optional<UserEntity> byEmail = userRepository.findByEmail(user.getEmail());
         if (byEmail.isPresent()) {
-            return "User Already Exists";
+            return "{\"output\":\"User Already Exist\"}";
         }
         UserEntity userEntity = UserEntity.builder()
                 .email(user.getEmail())
@@ -58,6 +58,17 @@ public class UserServiceImpl implements UserService {
             return userEntities.get(0);
         }
         return new UserEntity();
+    }
+
+    @Override
+    public String deleteUserCode(String id) {
+        Optional<UserEntity> byId = userRepository.findById(id);
+        if(byId.isPresent()){
+            userRepository.deleteById(id);
+            return  "{\"output\":\"User deleted Successfully\"}";
+        }
+        return "{\"output\":\"Usercode is not available\"}";
+
     }
 
     public String generateNextUserCode() {

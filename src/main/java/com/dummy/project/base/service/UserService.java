@@ -15,4 +15,5 @@ public interface UserService {
     public String signupUser(UserDTO user);
     public UserEntity loginUser(String username, String password);
 
+    String deleteUserCode(String id);
 }
